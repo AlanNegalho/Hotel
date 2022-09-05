@@ -11,8 +11,11 @@ import os
 
 #classe pagamento
 class Pagamento(Pessoa):
-    def __init__(self,cpf):
-        pass
+    def __init__(self,nome,cpf,telefone):
+       self.nome = nome
+       self.cpf = cpf
+       self.telefone = telefone
+
     #Funçao pagamento
     def pagamento():
         os.system('clear')

@@ -10,7 +10,9 @@ import main
 #classe reserva
 class Reserva(Pessoa):
     def __init__(self,nome, cpf, telefone):
-        pass
+        self.nome = nome
+        self.cpf = cpf
+        self.telefone = telefone
     
     #funçao buscar cadastro
     def buscar():

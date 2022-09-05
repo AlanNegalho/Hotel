@@ -8,7 +8,8 @@ import os
 #classe registros de quartos do hotel    
 class Registro(Pessoa):
     def __init__(self, cpf):
-        pass
+        self.cpf = cpf
+
     #funçao registro
     def registro():
         c = ConecxaoBD()

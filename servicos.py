@@ -10,7 +10,9 @@ import main
 #classe serviços
 class Consumer(Pessoa):
     def __init__(self,nome, cpf, telefone):
-       pass
+        self.nome = nome
+        self.cpf = cpf
+        self.telefone = telefone
     #funçao frigobar
     def frigoba():
         c = ConecxaoBD()
