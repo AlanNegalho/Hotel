@@ -1,47 +1,21 @@
 from colorama import init, Fore, Back
-from con import mydb
+from con import *
+from pessoa import Pessoa
 import validar_CPF
 import os
 import main
 
 
-def servicos(): 
-    os.system('clear')
 
-    print(Fore.CYAN+f"\n {'-'*51} ")
-    print(Fore.RED+f"|{'Serviços `o´'.center(51)}|")
-    print(Fore.CYAN+f" {'-'*51} \n")
-    print(Back.CYAN+f" 1 -> {'consumer'.center(43)}<-|")
-    print(f"|{' '.center(50)}|")
-    print(Back.CYAN+f" 2 -> {'Lavanderia'.center(43)}<-|")
-    print(f"|{' '.center(50)}|")
-    print(Back.CYAN+f" 0 -> {'Home'.center(43)}<-|")
-    print()
-
-    op = str(input(Fore.RED+"-> "))
-
-    if op == "1":
-        Consumer.frigoba()
-    elif op == "2":
-        Consumer.lavanderia()
-    elif op == "0":
-        main.inicio()
-        # Comandos para sair de um script
-    else:
-        print('Digite uma opção valida.')
-        return servicos()
-if __name__ == "__main__":
-    servicos()
 #classe serviços
-class Consumer():
+class Consumer(Pessoa):
     def __init__(self,nome, cpf, telefone):
-        self.nome = nome
-        self.cpf = cpf
-        self.telefone = telefone
+       pass
     #funçao frigobar
     def frigoba():
+        c = ConecxaoBD()
+        c.conecta()
         os.system('clear')
-        mycursor = mydb.cursor()
         cont = True
         while cont:
             cpf = str(input("CPF: "))
@@ -56,10 +30,11 @@ class Consumer():
         n_quarto = input('Quarto Nº -> ')
         sql = "SELECT * FROM frigoba WHERE id = %s"
         val= (n_quarto,)
-        mycursor.execute(sql,val)
+        c.cur.execute(sql,val)
+        c = c.cur.fetchall()
 
         print(Fore.BLUE +'Categoria| Produtos|')
-        for row in mycursor:
+        for row in c:
             print(row[1], row[2] )
         print()
         per = input("'S'-> ")
@@ -93,3 +68,31 @@ class Consumer():
             Consumer.lavanderia()
         elif per in 'Nn':
             servicos()
+
+def servicos(): 
+    os.system('clear')
+
+    print(Fore.CYAN+f"\n {'-'*51} ")
+    print(Fore.RED+f"|{'Serviços `o´'.center(51)}|")
+    print(Fore.CYAN+f" {'-'*51} \n")
+    print(Back.CYAN+f" 1 -> {'consumer'.center(43)}<-|")
+    print(f"|{' '.center(50)}|")
+    print(Back.CYAN+f" 2 -> {'Lavanderia'.center(43)}<-|")
+    print(f"|{' '.center(50)}|")
+    print(Back.CYAN+f" 0 -> {'Home'.center(43)}<-|")
+    print()
+
+    op = str(input(Fore.RED+"-> "))
+
+    if op == "1":
+        Consumer.frigoba()
+    elif op == "2":
+        Consumer.lavanderia()
+    elif op == "0":
+        main.inicio()
+        # Comandos para sair de um script
+    else:
+        print('Digite uma opção valida.')
+        return servicos()
+if __name__ == "__main__":
+    servicos()

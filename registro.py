@@ -1,7 +1,42 @@
 from colorama import init, Fore, Back
-from con import mydb
+from con import *
+from pessoa import Pessoa
 import main
 import os
+
+
+#classe registros de quartos do hotel    
+class Registro(Pessoa):
+    def __init__(self, cpf):
+        pass
+    #funçao registro
+    def registro():
+        c = ConecxaoBD()
+        c.conecta()
+        os.system('clear')
+        print(Fore.GREEN +'|Quartos desocupados|')
+        sql = "SELECT * FROM quarto WHERE reserva = 'L'"
+        c.cur.execute(sql)
+        c = c.cur.fetchall()
+        print(Fore.BLUE +'Nº|Categoria|')
+        for row in c:
+            print(row[0],row[1])
+        c = ConecxaoBD()
+        c.conecta()
+        sql = "SELECT * FROM quarto WHERE reserva = 'V'"
+        c.cur.execute(sql)
+        c = c.cur.fetchall()
+        print()
+        print(Fore.GREEN +'|Quartos ocupados|')
+        print(Fore.BLUE +'Nº|Categoria|')
+        for row in c:
+            print(row[0],row[1])
+        print()
+        per =input(Fore.CYAN+"Voltar ou inicio digite 'S': ")
+        if per in 'Ss':
+            main.inicio()
+        else:
+            return (per)
 
 def regist(): 
     os.system('clear')
@@ -27,30 +62,3 @@ def regist():
         return regist()
 if __name__ == "__main__":
     regist()
-#classe registros de quartos do hotel    
-class Registro():
-    def __init__(self, cpf):
-        self.cpf = cpf
-    #funçao registro
-    def registro():
-        os.system('clear')
-        mycursor = mydb.cursor()
-        print(Fore.GREEN +'|Quartos desocupados|')
-        mycursor.execute("SELECT * FROM quarto WHERE reserva = 'L'")
-        print(Fore.BLUE +'Nº|Categoria|')
-        for row in mycursor:
-            print(row[0],row[1])
-        mycursor.execute("SELECT * FROM quarto WHERE reserva = 'V'")
-        print()
-       
-        print(Fore.GREEN +'|Quartos ocupados|')
-        print(Fore.BLUE +'Nº|Categoria|')
-        for row in mycursor:
-            print(row[0],row[1])
-        print()
-        per =input(Fore.CYAN+"Voltar ou inicio digite 'S': ")
-        if per in 'Ss':
-            main.inicio()
-        else:
-            return (per)
-
