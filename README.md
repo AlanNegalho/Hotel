@@ -1,20 +1,35 @@
 <h1 align="center"> Hotel </h1>
 
-![menu_hotel](https://user-images.githubusercontent.com/107214420/190881415-b82ad661-efc8-472e-b2f7-b61b432e9ec6.jpg)
-
-
 <h2> Descrição do projeto </h2>
 
-Sistema  gerenciamento de hospedagem em hoteis. O sistema permitirar a realização de cadastro e busca, reservar, alterar dados cadstrais, 
+Sistema  gerenciamento de hospedagem em hoteis com banco de dados mysql. O sistema permitirar a realização de cadastro e busca, reservar, alterar dados cadstrais, 
 serviços de quartos, resgistro dos quartos ocupados/desocupados e pagamento.
 
-<h2> Status do Projeto </h2>
+## 🚀 Começando
 
- :construction: Projeto em construção :construction:
+Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
+ 
+### 📋 Pré-requisitos
 
-<h2> :hammer: Funcionalidades do projeto </h2>
+E necessário ter uma ide que rode o script python e mysql. 
+link para download vscode.
+```
+https://code.visualstudio.com/download
+```
 
-<h4> Dados fictício  Aleatórios</h4>
+link para download mysql
 
-https://user-images.githubusercontent.com/107214420/190882943-7f1498d3-b5bf-4833-a7fd-cabe2329def5.mp4
+```
+https://www.mysql.com/downloads/
+```
 
+
+## 🛠️ Construído com
+
+
+* [Python](https://www.python.org/) - Linguagem usada
+* [Mysql](https://www.mysql.com/) - Banco de dados
+
+
+---
+⌨️ com ❤️ por [Alan Negalho](https://github.com/AlanNegalho) 😊
